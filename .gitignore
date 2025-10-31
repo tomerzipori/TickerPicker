@@ -1,0 +1,12 @@
+# Python
+.venv/
+stocksenv
+__pycache__/
+*.pyc
+
+# Secrets
+credentials.json
+
+# OS/editor
+.DS_Store
+*.swp
