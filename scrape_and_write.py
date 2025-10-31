@@ -2,6 +2,7 @@ from __future__ import print_function
 from auth import spreadsheet_service
 import argparse
 import json
+from typing import Dict
 
 import yfinance as yf
 
@@ -12,12 +13,10 @@ STOCK2TICKER = {
     'TA90': 'TCH-F9.TA'
 }
 
-# sheet_id = '1XbtkMfJixvPch5RdGb4b9GXNEIAk90BKr3DTThjq-k4'
-
-def scrape_prices(stock2ticker):
+def scrape_prices(stock2ticker: Dict) -> Dict:
     return {stock: yf.Ticker(ticker).info['regularMarketPrice'] for stock, ticker in stock2ticker.items()}
 
-def write_prices(sheet_id, range, prices):
+def write_prices(sheet_id: str, range: str, prices: Dict) -> None:
     body = {
         'values': [[prices[price] / 100.0] for price in prices]
     }
