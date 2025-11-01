@@ -1,7 +1,7 @@
-# :chart_with_upwards_trend: TickerPicker
-Fetch stock prices from the Tel Aviv stock exchage, and write them in a Google Sheet.
+# 📈 TickerPicker
+Fetch stock prices from international stock exchages, and write them in a Google Sheet.
 
-# Structure
+# 📁 Repository Structure
 ```
 ├── configs <--- Add credentials.json here
 │   ├── config.json
@@ -15,18 +15,20 @@ Fetch stock prices from the Tel Aviv stock exchage, and write them in a Google S
 └── run.sh
 ```
 
-# Setup
-```bash
-git clone git@github.com:tomerzipori/TickerPicker.git
-```
+# 💿 Setup
 
-## Google Cloud Console (GCP) and service accounts
+## ♊ Google Cloud Console (GCP) and service accounts
 Nice tutorial found here: https://www.youtube.com/watch?v=-vBbkrk9sdA&t=29s \
 Add your credentials.json for Google service account to the `config` directory.
 
-## Prerequisites (checked only on these, very likely to work on other versions)
+## 👩‍🔧 Prerequisites (checked only on these, very likely to work on other versions)
 - Python 3.13.5/3.12.3
 - git 2.47.3/2.43.0
+
+## 💾 Installation
+```bash
+git clone git@github.com:tomerzipori/TickerPicker.git
+```
 
 ## Customize Configuration
 Edit `configs/config.json` to match your Google Sheet: main variables for customiztion are:
@@ -36,21 +38,21 @@ Edit `configs/config.json` to match your Google Sheet: main variables for custom
   - `name` - Sheet name in the destination file.
   - `cells` - Range of cells to write the data to. In a Google Sheets/Excel format (e.g "F23:F26").
  
-## Run once manually:
+## 🚀 Run once manually:
 ```bash
 ./run.sh
 ```
-On the initial run it will build the required virtual environment and install dependencies.
+Required virtual environment and dependencies are built and installed on initial run.
 
-# Cron Jobs
-The script is meant to be schduled, currently tested on Linux's cron. Add those lines to `crontab`:
+# ⏲️ Cron Jobs
+The script is meant to be schduled, currently tested on Linux's cron only. Add those lines to `crontab`:
 ```bash
 # Run hourly, Sun-Thu, 9:00-18:00
 0 9-18 * * 0-4 /absolute/path/to/run.sh
 ```
 
-## Logging
-Logging is recommended for scheduled tasks, this repo has supprt for it. First, create a `logs` directory in the project's root:
+## 🗒️ Logging
+Logging is recommended for scheduled tasks, this repo has support for it. First, create a `logs` directory in the project's root:
 ```bash
 mkdir logs
 ```
@@ -69,7 +71,32 @@ Add these lines to `crontab`:
 
 Logs from each run are saved to `current.log`. The second line takes each `current.log` file at the end of the day, converts it to a txt file with the following name structure: `log-YYYY-MM-DD.txt`, and creates a new `current.log` file. The third line deletes each day any logs older then X amount of days (specified in the `logging:retention_days` field on `config.json`).
 
+### Example log for a successful run
+```
+[2025-11-01 12-26-20] ===== Starting run =====
+[2025-11-01 12-26-20] Python script: scripts/main.py
+[2025-11-01 12-26-20] Sheet target: DATA!F23:F26
+[2025-11-01 12-26-20] Virtual environment found at stocksenv.
+[2025-11-01 12-26-20] Activating virtual environment...
+[2025-11-01 12-26-20] Running scripts/main.py...
+[2025-11-01 12:26:20] Starting script...
+[2025-11-01 12:26:20] Loading stock mapping from configs/STOCK2TICKER.json
+[2025-11-01 12:26:20] Fetching stock prices...
+[2025-11-01 12:26:21] sp500 (IS-FF702.TA) = 239140.0
+[2025-11-01 12:26:22] europe (IS-FF301.TA) = 34260.0
+[2025-11-01 12:26:23] EM (IS-FF101.TA) = 14640.0
+[2025-11-01 12:26:23] TA90 (TCH-F9.TA) = 3284.0
+[2025-11-01 12:26:23] Fetched 4 prices.
+[2025-11-01 12:26:23] Writing prices to Google Sheet range 'DATA!F23:F26'...
+[2025-11-01 12:26:25] 4 cells updated successfully.
+[2025-11-01 12:26:25] Script completed successfully.
+[2025-11-01 12-26-25] Script finished successfully.
+[2025-11-01 12-26-25] Deactivating virtual environment.
+[2025-11-01 12-26-25] ===== Finished run =====
+[2025-11-01 12-26-25] -------------------------------------------------------------------------
+```
 
-
-
-
+# 🗺️ Things left to do
+- Add some kind of `build` or `verify` script to "compile" and check repo before run. For example, if number of stocks extracted fits in the cell range on destination.
+- Additional functionalities like time-series of stock prices etc...
+- Create dashboard for checking logs more conveniently (?)
