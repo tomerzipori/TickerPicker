@@ -1,5 +1,7 @@
 # 📈 TickerPicker
-Fetch stock prices from international stock exchages, and write them in a Google Sheet.
+![GitHub repo size](https://img.shields.io/github/repo-size/tomerzipori/TickerPicker)
+
+Fetch stock prices from international stock exchages, and write them in a Google Sheet. This repo can run fairly good on a RapsberryPi Zero 2 W.
 
 # 📁 Repository Structure
 ```
