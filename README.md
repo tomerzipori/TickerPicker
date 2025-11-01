@@ -73,27 +73,27 @@ Logs from each run are saved to `current.log`. The second line takes each `curre
 
 ### Example log for a successful run
 ```
-[2025-11-01 12-26-20] ===== Starting run =====
-[2025-11-01 12-26-20] Python script: scripts/main.py
-[2025-11-01 12-26-20] Sheet target: DATA!F23:F26
-[2025-11-01 12-26-20] Virtual environment found at stocksenv.
-[2025-11-01 12-26-20] Activating virtual environment...
-[2025-11-01 12-26-20] Running scripts/main.py...
-[2025-11-01 12:26:20] Starting script...
-[2025-11-01 12:26:20] Loading stock mapping from configs/STOCK2TICKER.json
-[2025-11-01 12:26:20] Fetching stock prices...
-[2025-11-01 12:26:21] sp500 (IS-FF702.TA) = 239140.0
-[2025-11-01 12:26:22] europe (IS-FF301.TA) = 34260.0
-[2025-11-01 12:26:23] EM (IS-FF101.TA) = 14640.0
-[2025-11-01 12:26:23] TA90 (TCH-F9.TA) = 3284.0
-[2025-11-01 12:26:23] Fetched 4 prices.
-[2025-11-01 12:26:23] Writing prices to Google Sheet range 'DATA!F23:F26'...
-[2025-11-01 12:26:25] 4 cells updated successfully.
-[2025-11-01 12:26:25] Script completed successfully.
-[2025-11-01 12-26-25] Script finished successfully.
-[2025-11-01 12-26-25] Deactivating virtual environment.
-[2025-11-01 12-26-25] ===== Finished run =====
-[2025-11-01 12-26-25] -------------------------------------------------------------------------
+[2025-11-01 12-50-58] ===== Starting run =====
+[2025-11-01 12-50-58] Python script: scripts/main.py
+[2025-11-01 12-50-58] Sheet target: DATA!F23:F26
+[2025-11-01 12-50-58] Virtual environment found at stocksenv.
+[2025-11-01 12-50-58] Activating virtual environment...
+[2025-11-01 12-50-58] Running scripts/main.py...
+[2025-11-01 12:50:59] Starting Python script...
+[2025-11-01 12:50:59] Loading stock mapping from configs/STOCK2TICKER.json
+[2025-11-01 12:50:59] Fetching stock prices...
+[2025-11-01 12:51:00] sp500 (IS-FF702.TA) = 239140.0
+[2025-11-01 12:51:01] europe (IS-FF301.TA) = 34260.0
+[2025-11-01 12:51:01] EM (IS-FF101.TA) = 14640.0
+[2025-11-01 12:51:02] TA90 (TCH-F9.TA) = 3284.0
+[2025-11-01 12:51:02] Fetched 4 prices.
+[2025-11-01 12:51:02] Writing prices to Google Sheet range 'DATA!F23:F26'...
+[2025-11-01 12:51:03] 4 cells updated successfully.
+[2025-11-01 12:51:03] Python script completed successfully.
+[2025-11-01 12-51-03] Bash script completed successfully.
+[2025-11-01 12-51-03] Deactivating virtual environment.
+[2025-11-01 12-51-03] ===== Finished run =====
+[2025-11-01 12-51-03] -------------------------------------------------------------------------
 ```
 
 # 🗺️ Things left to do
