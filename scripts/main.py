@@ -12,7 +12,7 @@ import yfinance as yf
 def log(message: str) -> None:
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {message}")
 
-def scrape_prices(stock2ticker: Dict) -> Dict:
+def get_prices(stock2ticker: Dict) -> Dict:
     log("Fetching stock prices...")
     prices = {}
     for stock, ticker in stock2ticker.items():
@@ -64,7 +64,7 @@ def main():
     range = arguments.sheet_name + "!" + arguments.cells
 
     # Extract stock prices
-    prices = scrape_prices(stock2ticker_dict)
+    prices = get_prices(stock2ticker_dict)
 
     # Write stock prices to Google Sheets
     write_prices(sheet_id=sheet_id, range=range, prices=prices)

@@ -16,15 +16,22 @@ error_handler() {
 
 trap error_handler ERR
 
-# Configuration
-VENV_DIR="stocksenv"
-PYTHON_SCRIPT="scrape_and_write.py"
+# Load config values from config.json
+CONFIG="configs/config.json"
 
-## Globals
-STOCK2TICKER="STOCK2TICKER.json"
-SHEET_ID="1XbtkMfJixvPch5RdGb4b9GXNEIAk90BKr3DTThjq-k4"
-SHEET_NAME="DATA"
-CELLS="F23:F26"
+get_json_value () {
+    python3 -c "import json; print(json.load(open('${CONFIG}'))$1)"
+}
+
+# General Configuration
+VENV_DIR=$(get_json_value "['venv_dir']")
+PYTHON_SCRIPT=$(get_json_value "['python_script']")
+
+## Python Arguments
+STOCK2TICKER=$(get_json_value "['stock2ticker']")
+SHEET_ID=$(get_json_value "['sheet']['id']")
+SHEET_NAME=$(get_json_value "['sheet']['name']")
+CELLS=$(get_json_value "['sheet']['cells']")
 
 # Start
 log "===== Starting run ====="
@@ -35,7 +42,7 @@ log "Sheet target: ${SHEET_NAME}!${CELLS}"
 if [[ ! -d "${VENV_DIR}" ]]; then
     log "Virtual environment not found, creating one at ${VENV_DIR}..."
     python3 -m venv "${VENV_DIR}"
-    log "Building virtual environment..."
+    log "Installing dependencies..."
     source "${VENV_DIR}/bin/activate"
     pip install --upgrade pip
     pip install -r requirements.txt
