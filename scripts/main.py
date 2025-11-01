@@ -1,16 +1,12 @@
 from __future__ import print_function
 from auth import spreadsheet_service
+from utils import log, iscol
 
 import argparse
 import json
 from typing import Dict
-from datetime import datetime
 
 import yfinance as yf
-
-# Helper function for logging
-def log(message: str) -> None:
-    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {message}")
 
 def get_prices(stock2ticker: Dict) -> Dict:
     log("Fetching stock prices...")
@@ -31,7 +27,7 @@ def get_prices(stock2ticker: Dict) -> Dict:
 def write_prices(sheet_id: str, range: str, prices: Dict) -> None:
     log(f"Writing prices to Google Sheet range '{range}'...")
     body = {
-        'values': [[prices[price] / 100.0] for price in prices]
+        'values': [[prices[price] / 100.0] for price in prices] if iscol(range) else [prices[price] / 100.0 for price in prices]
     }
     try:
         result = spreadsheet_service.spreadsheets().values().update(
