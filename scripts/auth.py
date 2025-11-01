@@ -1,9 +1,10 @@
 from __future__ import print_function
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
+from pathlib import Path
 import json
 
-with open("../configs/config.json", "r") as f:
+with open(Path(__file__).resolve().parents[1] / "configs" / "config.json", "r") as f:
     config = json.load(f)
 
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
