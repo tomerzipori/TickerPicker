@@ -1,7 +1,7 @@
 # 📈 TickerPicker
 ![GitHub repo size](https://img.shields.io/github/repo-size/tomerzipori/TickerPicker)
 
-Fetch stock prices from international stock exchages, and write them in a Google Sheet. This repo can run fairly good on a RapsberryPi Zero 2 W.
+Fetching stock prices from international stock exchages, and writing them in a Google Sheet. This repo can run fairly good on a RapsberryPi Zero 2 W.
 
 # 📁 Repository Structure
 ```
@@ -20,7 +20,7 @@ Fetch stock prices from international stock exchages, and write them in a Google
 # 💿 Setup
 
 ## ♊ Google Cloud Console (GCP) and service accounts
-Nice tutorial found here: https://www.youtube.com/watch?v=-vBbkrk9sdA&t=29s \
+Nice tutorial found [here](https://www.youtube.com/watch?v=-vBbkrk9sdA&t=29s). \
 Add your credentials.json for Google service account to the `config` directory.
 
 ## 👩‍🔧 Prerequisites (checked only on these, very likely to work on other versions)
@@ -40,14 +40,14 @@ Edit `configs/config.json` to match your Google Sheet: main variables for custom
   - `name` - Sheet name in the destination file.
   - `cells` - Range of cells to write the data to. In a Google Sheets/Excel format (e.g "F23:F26").
  
-## 🚀 Run once manually:
+## 🚀 Run at least once manually:
 ```bash
 ./run.sh
 ```
 Required virtual environment and dependencies are built and installed on initial run.
 
 # ⏲️ Cron Jobs
-The script is meant to be schduled, currently tested on Linux's cron only. Add those lines to `crontab`:
+The script is meant to be scheduled, currently tested on Linux's cron only. Add those lines to `crontab`:
 ```bash
 # Run hourly, Sun-Thu, 9:00-18:00
 0 9-18 * * 0-4 /absolute/path/to/run.sh
