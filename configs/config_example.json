@@ -1,0 +1,15 @@
+{
+    "venv_dir": "stocksenv",
+    "python_script": "scripts/main.py",
+    "stock2ticker": "configs/STOCK2TICKER.json",
+    "sheet": {
+        "id": "REPLACE ME",
+        "name": "Data",
+        "cells": "F14:L14"
+    },
+    "credentials": "configs/credentials.json",
+    "logging": {
+        "log_dir_name": "logs",
+        "retention_days": 30
+    }
+}
