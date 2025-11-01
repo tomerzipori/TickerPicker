@@ -5,10 +5,8 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 ROOT_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
-# Log
-log() {
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*";
-}
+# Source utils.sh for functions
+source "${SCRIPT_DIR}/utils.sh"
 
 CURRENT_LOG="${ROOT_DIR}/logs/current.log"
 ARCHIVE="${ROOT_DIR}/logs/log-$(date +\%Y-\%m-\%d).txt"

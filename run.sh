@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Helper function for logging
-log() {
-    echo "[$(date '+%Y-%m-%d %H-%M-%S')] $*"
-}
+# Get the path to this script
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Source utils.sh for functions
+source "${SCRIPT_DIR}/scripts/utils.sh"
 
 # Error handler
 error_handler() {
@@ -19,19 +20,15 @@ trap error_handler ERR
 # Load config values from config.json
 CONFIG="configs/config.json"
 
-get_json_value () {
-    python3 -c "import json; print(json.load(open('${CONFIG}'))$1)"
-}
-
 # General Configuration
-VENV_DIR=$(get_json_value "['venv_dir']")
-PYTHON_SCRIPT=$(get_json_value "['python_script']")
+VENV_DIR=$(get_json_value ${CONFIG} "['venv_dir']")
+PYTHON_SCRIPT=$(get_json_value ${CONFIG} "['python_script']")
 
 ## Python Arguments
-STOCK2TICKER=$(get_json_value "['stock2ticker']")
-SHEET_ID=$(get_json_value "['sheet']['id']")
-SHEET_NAME=$(get_json_value "['sheet']['name']")
-CELLS=$(get_json_value "['sheet']['cells']")
+STOCK2TICKER=$(get_json_value ${CONFIG} "['stock2ticker']")
+SHEET_ID=$(get_json_value ${CONFIG} "['sheet']['id']")
+SHEET_NAME=$(get_json_value ${CONFIG} "['sheet']['name']")
+CELLS=$(get_json_value ${CONFIG} "['sheet']['cells']")
 
 # Start
 log "===== Starting run ====="
