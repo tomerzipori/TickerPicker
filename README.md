@@ -33,7 +33,7 @@ git clone git@github.com:tomerzipori/TickerPicker.git
 ```
 
 ## Customize Configuration
-Edit `configs/config.json` to match your Google Sheet: main variables for customiztion are:
+Rename `config_example.json` to `config.json` and edit it to match your Google Sheet: main variables for customiztion are:
 - `stock2ticker` - A json file in the `configs` directory mapping stocks names (keys) to tickers (values).
 - `sheet` - Three variables specifying the destination Google Sheet:
   - `id` - Google Sheet ID (appearing in the URL at "...spreadsheets/d/<SHEET_ID>/..."
