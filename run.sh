@@ -63,7 +63,7 @@ if python3 "${PYTHON_SCRIPT}" \
     --sheet-id "${SHEET_ID}" \
     --sheet-name "${SHEET_NAME}" \
     --cells "${CELLS}"; then
-    log "Script finished successfully."
+    log "Bash script completed successfully."
 else
     log "Script encountered an error."
 fi

@@ -46,7 +46,7 @@ def write_prices(sheet_id: str, range: str, prices: Dict) -> None:
 
 
 def main():
-    log("Starting script...")
+    log("Starting Python script...")
     # Parsing argumnets from bash wrapper
     parser = argparse.ArgumentParser()
     parser.add_argument("--stock2ticker", type=str, required=True, help="Stock 2 Ticker dictionary (json file)")
@@ -68,7 +68,7 @@ def main():
 
     # Write stock prices to Google Sheets
     write_prices(sheet_id=sheet_id, range=range, prices=prices)
-    log("Script completed successfully.")
+    log("Python script completed successfully.")
 
 if __name__ == "__main__":
     main()
