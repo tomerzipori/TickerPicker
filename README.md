@@ -50,7 +50,7 @@ Required virtual environment and dependencies are built and installed on initial
 The script is meant to be scheduled, currently tested on Linux's cron only. Add those lines to `crontab`:
 ```bash
 # Run hourly, Sun-Thu, 9:00-18:00
-0 9-18 * * 0-4 /absolute/path/to/run.sh
+0 9-18 * * 0-4 cd /absolute/path/to/root && ./run.sh
 ```
 
 ## 🗒️ Logging
@@ -62,13 +62,13 @@ mkdir logs
 Add these lines to `crontab`:
 ```bash
 # Run hourly, Sun-Thu, 9:00-18:00
-0 9-18 * * 0-4 /absolute/path/to/root/run.sh >> /absolute/path/to/root/logs/current.log 2>&1
+0 9-18 * * 0-4 cd /absolute/path/to/root && ./run.sh >> /absolute/path/to/root/logs/current.log 2>&1
 
 # Rotate logs Sun-Thu at 18:10
-10 18 * * 0-4 /absolute/path/to/root/scripts/rotate_logs.sh >> /absolute/path/to/root/logs/current.log 2>&1
+10 18 * * 0-4 cd /absolute/path/to/root/scripts && ./rotate_logs.sh >> /absolute/path/to/root/logs/current.log 2>&1
 
 # Delete old logs daily
-20 18 * * * /absolute/path/to/root/scripts/prune_logs.sh >> /absolute/path/to/root/logs/current.log 2>&1
+20 18 * * * cd /absolute/path/to/root/scripts && ./prune_logs.sh >> /absolute/path/to/root/logs/current.log 2>&1
 ```
 
 Logs from each run are saved to `current.log`. The second line takes each `current.log` file at the end of the day, converts it to a txt file with the following name structure: `log-YYYY-MM-DD.txt`, and creates a new `current.log` file. The third line deletes each day any logs older then X amount of days (specified in the `logging:retention_days` field on `config.json`).
