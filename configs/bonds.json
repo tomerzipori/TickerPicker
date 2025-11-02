@@ -1,0 +1,10 @@
+{
+    "index_linked": {
+        "url": "https://www.globes.co.il/portal/instrument.aspx?instrumentid=69953",
+        "xpath": "//*[@id=\"bgLastDeal\"]"
+    },
+    "non_index_liked": {
+        "url": "https://www.globes.co.il/portal/instrument.aspx?instrumentid=40979",
+        "xpath": "//*[@id=\"bgLastDeal\"]"
+    }
+}

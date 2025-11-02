@@ -21,14 +21,15 @@ trap error_handler ERR
 CONFIG="configs/config.json"
 
 # General Configuration
-VENV_DIR=$(get_json_value ${CONFIG} "['venv_dir']")
-PYTHON_SCRIPT=$(get_json_value ${CONFIG} "['python_script']")
+VENV_DIR=$(get_json_value ${CONFIG} '["venv_dir"]')
+PYTHON_SCRIPT=$(get_json_value ${CONFIG} '["python_script"]')
 
 ## Python Arguments
-STOCK2TICKER=$(get_json_value ${CONFIG} "['stock2ticker']")
-SHEET_ID=$(get_json_value ${CONFIG} "['sheet']['id']")
-SHEET_NAME=$(get_json_value ${CONFIG} "['sheet']['name']")
-CELLS=$(get_json_value ${CONFIG} "['sheet']['cells']")
+STOCK2TICKER=$(get_json_value ${CONFIG} '["stock2ticker"]')
+BONDS=$(get_json_value ${CONFIG} '["bonds"]')
+SHEET_ID=$(get_json_value ${CONFIG} '["sheet"]["id"]')
+SHEET_NAME=$(get_json_value ${CONFIG} '["sheet"]["name"]')
+CELLS=$(get_json_value ${CONFIG} '["sheet"]["cells"]')
 
 # Start
 log "===== Starting run ====="
@@ -57,6 +58,7 @@ source "${VENV_DIR}/bin/activate"
 log "Running ${PYTHON_SCRIPT}..."
 if python3 "${PYTHON_SCRIPT}" \
     --stock2ticker "${STOCK2TICKER}" \
+    --bonds "${BONDS}" \
     --sheet-id "${SHEET_ID}" \
     --sheet-name "${SHEET_NAME}" \
     --cells "${CELLS}"; then

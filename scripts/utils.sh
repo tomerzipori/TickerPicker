@@ -10,5 +10,14 @@ log() {
 # json reader
 get_json_value () {
     local json_file="$1"
-    python3 -c "import json; print(json.load(open('${json_file}'))$2)"
+    local field="$2"
+    python3 -c "
+import json
+dict = json.load(open('${json_file}'))
+try:
+    res = dict${field}
+except Exception:
+    res = None
+print(res)
+"
 }
