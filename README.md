@@ -13,7 +13,9 @@ Fetching stock prices from international stock exchages, and writing them in a G
 │   ├── auth.py
 |   ├── main.py
 |   ├── prune_logs.sh
-|   └── rotate_logs.sh
+|   ├── rotate_logs.sh
+|   ├── utils.sh
+|   └── utils.py
 ├── requirements.txt
 └── run.sh
 ```
