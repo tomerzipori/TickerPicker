@@ -7,7 +7,8 @@ Fetching stock prices from international stock exchages, and writing them in a G
 ```
 ├── configs <--- Add credentials.json here
 │   ├── config.json
-│   └── STOCK2TICKER.json
+│   ├── STOCK2TICKER.json
+|   └── bonds.json
 ├── scripts
 │   ├── auth.py
 |   ├── main.py
@@ -35,6 +36,7 @@ git clone git@github.com:tomerzipori/TickerPicker.git
 ## Customize Configuration
 Rename `config_example.json` to `config.json` and edit it to match your Google Sheet: main variables for customiztion are:
 - `stock2ticker` - A json file in the `configs` directory mapping stocks names (keys) to tickers (values).
+- `bonds` - A json file in the `configs` directory mapping bonds (or any other stock listed online) to a dictionary with URL and XPATH fields - *Optional*.
 - `sheet` - Three variables specifying the destination Google Sheet:
   - `id` - Google Sheet ID (appearing in the URL at "...spreadsheets/d/<SHEET_ID>/..."
   - `name` - Sheet name in the destination file.
