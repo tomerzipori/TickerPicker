@@ -40,7 +40,7 @@ Rename `config_example.json` to `config.json` and edit it to match your Google S
 - `stock2ticker` - A json file in the `configs` directory mapping stocks names (keys) to tickers (values).
 - `bonds` - A json file in the `configs` directory mapping bonds (or any other stock listed online) to a dictionary with URL and XPATH fields - *Optional*.
 - `sheet` - Three variables specifying the destination Google Sheet:
-  - `id` - Google Sheet ID (appearing in the URL at "...spreadsheets/d/<SHEET_ID>/..."
+  - `id` - Google Sheet ID (appearing in the URL at "...spreadsheets/d/<SHEET_ID>/...")
   - `name` - Sheet name in the destination file.
   - `cells` - Range of cells to write the data to. In a Google Sheets/Excel format (e.g "F23:F26").
  
@@ -104,5 +104,5 @@ Logs from each run are saved to `current.log`. The second line takes each `curre
 
 # 🗺️ Things left to do
 - Add some kind of `build` or `verify` script to "compile" and check repo before run. For example, if number of stocks extracted fits in the cell range on destination.
-- Additional functionalities like time-series of stock prices etc...
+- A Streamlit app (?)
 - Create dashboard for checking logs more conveniently (?)
